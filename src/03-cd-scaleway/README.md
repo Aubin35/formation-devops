@@ -62,7 +62,7 @@ cat ~/.ssh/id_ed25519_formation
 Se connecter à l'instance et installer Docker :
 
 ```bash
-export INSTANCE_IP=<INSTANCE_IP>
+export INSTANCE_IP=151.115.85.189
 ssh -i ~/.ssh/id_ed25519_formation ubuntu@$INSTANCE_IP
 
 # Sur l'instance — ajouter le dépôt officiel Docker
@@ -104,13 +104,13 @@ Déposer les fichiers `docker-compose.yml`, `init.sql` et `nginx.conf` de l'appl
 # Depuis votre machine locale
 scp -i ~/.ssh/id_ed25519_formation \
     src/app/docker-compose.yml \
-    ubuntu@$INSTANCE_IP:/opt/app/docker-compose.yml
+    ubuntu@151.115.85.189:/opt/app/docker-compose.yml
 scp -i ~/.ssh/id_ed25519_formation \
     src/app/db/init.sql \
-    ubuntu@$INSTANCE_IP:/opt/app/db/init.sql
+    ubuntu@151.115.85.189:/opt/app/db/init.sql
 scp -i ~/.ssh/id_ed25519_formation \
     src/app/nginx/nginx.conf \
-    ubuntu@$INSTANCE_IP:/opt/app/nginx/nginx.conf
+    ubuntu@151.115.85.189:/opt/app/nginx/nginx.conf
 ```
 
 ---
