@@ -29,7 +29,7 @@ jobs:
       - uses: actions/checkout@v5
 
       - name: Set lowercase owner
-        run: echo "OWNER=$(echo '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+        run: echo "OWNER=$(echo '${{ env.OWNER }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
 
       # Écrire la clé SSH dans un fichier temporaire avant toute connexion
       - name: Setup SSH key
@@ -48,7 +48,7 @@ jobs:
               ubuntu@${{ secrets.INSTANCE_IP }} \
               "echo '$GHCR_TOKEN' | docker login ghcr.io -u ${{ github.actor }} --password-stdin && \
                cd /opt/app && \
-               GITHUB_REPOSITORY_OWNER=${{ github.repository_owner }} APP_VERSION=${{ needs.check.outputs.sha }} docker compose up -d --no-build"
+               GITHUB_REPOSITORY_OWNER=${{ env.OWNER }} APP_VERSION=${{ needs.check.outputs.sha }} docker compose up -d --no-build"
 
 
       - name: Smoke test staging
